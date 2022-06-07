@@ -3,6 +3,7 @@ import { useState } from "react";
 import CodeEditor from "./components/CodeEditor/CodeEditor";
 import Preview from "./components/Preview/Preview";
 import bundle from "./bundler";
+import Resizable from "./components/Resizable/Resizable";
 
 function App() {
   const [input, setInput] = useState("");
@@ -14,16 +15,13 @@ function App() {
   };
 
   return (
-    <div>
-      <CodeEditor initialValue="const a = 1;" onChange={(value) => setInput(value)} />
-      <textarea value={input} onChange={(e) => setInput(e.target.value)}></textarea>
+    <Resizable direction="vertical">
+      <div style={{ height: "100%", display: "flex", flexDirection: "row" }}>
+        <CodeEditor initialValue="const a = 1;" onChange={(value) => setInput(value)} />
 
-      <div>
-        <button onClick={onClick}>Submit</button>
+        <Preview code={code} />
       </div>
-
-      <Preview code={code} />
-    </div>
+    </Resizable>
   );
 }
 
