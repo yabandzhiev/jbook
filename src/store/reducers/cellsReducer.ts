@@ -64,6 +64,12 @@ const reducer = produce(
           (id) => id === action.payload.id
         );
 
+        if (foundIndex < 0) {
+          state.order.push(cell.id);
+        } else {
+          state.order.splice(foundIndex, 0, cell.id);
+        }
+
         return;
       default:
         return state;
