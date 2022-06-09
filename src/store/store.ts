@@ -8,7 +8,6 @@ export const store = createStore(
   {},
   applyMiddleware(thunk)
 );
-
 store.dispatch({
   type: ActionType.INSERT_CELL_BEFORE,
   payload: {
@@ -25,13 +24,18 @@ store.dispatch({
   },
 });
 
-const id = store.getState().cells?.order[0];
-console.log(store.getState());
-
 store.dispatch({
-  type: ActionType.MOVE_CELL,
-  //@ts-ignore
-  payload: { id, direction: "down" },
+  type: ActionType.INSERT_CELL_BEFORE,
+  payload: {
+    id: null,
+    type: "code",
+  },
 });
 
-console.log(store.getState());
+store.dispatch({
+  type: ActionType.INSERT_CELL_BEFORE,
+  payload: {
+    id: null,
+    type: "text",
+  },
+});
