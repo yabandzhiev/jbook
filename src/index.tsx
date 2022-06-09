@@ -8,13 +8,15 @@ import { store } from "./store";
 import TextEditor from "./components/TextEditor/TextEditor";
 
 import "bulmaswatch/superhero/bulmaswatch.min.css";
+import CellList from "./components/CellList/CellList";
 
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       {/* <App /> */}
 
-      <TextEditor />
+      {/* <TextEditor /> */}
+      <CellList />
     </Provider>
   </React.StrictMode>,
   document.getElementById("root")
