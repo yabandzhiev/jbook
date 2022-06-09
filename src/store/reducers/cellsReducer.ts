@@ -26,13 +26,14 @@ const reducer = produce(
         const { id, content } = action.payload;
 
         state.data[id].content = content;
-        return state;
 
+        return state;
       case ActionType.DELETE_CELL:
         delete state.data[action.payload];
         state.order = state.order.filter(
           (id) => id !== action.payload
         );
+
         return state;
       case ActionType.MOVE_CELL:
         const { direction } = action.payload;
@@ -53,13 +54,13 @@ const reducer = produce(
         state.order[targetIndex] = action.payload.id;
 
         return state;
-
       case ActionType.INSERT_CELL_BEFORE:
         const cell: Cell = {
           content: "",
           type: action.payload.type,
           id: randomId(),
         };
+
         state.data[cell.id] = cell;
 
         const foundIndex = state.order.findIndex(
@@ -80,7 +81,7 @@ const reducer = produce(
 );
 
 const randomId = () => {
-  return Math.random().toString(36).substring(2, 6);
+  return Math.random().toString(36).substr(2, 5);
 };
 
 export default reducer;
