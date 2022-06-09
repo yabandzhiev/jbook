@@ -8,7 +8,10 @@ import {
   UpdateCellAction,
 } from "../actions";
 
-export const updateCell = (id: string, content: string): UpdateCellAction => {
+export const updateCell = (
+  id: string,
+  content: string
+): UpdateCellAction => {
   return {
     type: ActionType.UPDATE_CELL,
     payload: {
@@ -17,14 +20,19 @@ export const updateCell = (id: string, content: string): UpdateCellAction => {
     },
   };
 };
-export const deleteCell = (id: string): DeleteCellAction => {
+export const deleteCell = (
+  id: string
+): DeleteCellAction => {
   return {
     type: ActionType.DELETE_CELL,
     payload: id,
   };
 };
 
-export const moveCell = (id: string, direction: Direction): MoveCellAction => {
+export const moveCell = (
+  id: string,
+  direction: Direction
+): MoveCellAction => {
   return {
     type: ActionType.MOVE_CELL,
     payload: {
@@ -35,7 +43,7 @@ export const moveCell = (id: string, direction: Direction): MoveCellAction => {
 };
 
 export const insertCellBefore = (
-  id: string,
+  id: string | null,
   cellType: CellTypes
 ): InsertCellBeforeAction => {
   return {
