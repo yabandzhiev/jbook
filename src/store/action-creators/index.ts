@@ -3,15 +3,12 @@ import { ActionType } from "../action-types";
 import {
   DeleteCellAction,
   Direction,
-  InsertCellBeforeAction,
+  InsertCellAfterAction,
   MoveCellAction,
   UpdateCellAction,
 } from "../actions";
 
-export const updateCell = (
-  id: string,
-  content: string
-): UpdateCellAction => {
+export const updateCell = (id: string, content: string): UpdateCellAction => {
   return {
     type: ActionType.UPDATE_CELL,
     payload: {
@@ -20,19 +17,14 @@ export const updateCell = (
     },
   };
 };
-export const deleteCell = (
-  id: string
-): DeleteCellAction => {
+export const deleteCell = (id: string): DeleteCellAction => {
   return {
     type: ActionType.DELETE_CELL,
     payload: id,
   };
 };
 
-export const moveCell = (
-  id: string,
-  direction: Direction
-): MoveCellAction => {
+export const moveCell = (id: string, direction: Direction): MoveCellAction => {
   return {
     type: ActionType.MOVE_CELL,
     payload: {
@@ -42,12 +34,12 @@ export const moveCell = (
   };
 };
 
-export const insertCellBefore = (
+export const insertCellAfter = (
   id: string | null,
   cellType: CellTypes
-): InsertCellBeforeAction => {
+): InsertCellAfterAction => {
   return {
-    type: ActionType.INSERT_CELL_BEFORE,
+    type: ActionType.INSERT_CELL_AFTER,
     payload: {
       id,
       type: cellType,
