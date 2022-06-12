@@ -8,12 +8,9 @@ interface TextEditorProps {
   cell: Cell;
 }
 
-const TextEditor: React.FC<TextEditorProps> = ({
-  cell,
-}) => {
+const TextEditor: React.FC<TextEditorProps> = ({ cell }) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const [editing, setEditing] = useState(false);
-  const [value, setValue] = useState("# Header");
   const { updateCell } = useActions();
 
   useEffect(() => {
@@ -49,14 +46,9 @@ const TextEditor: React.FC<TextEditorProps> = ({
     );
   }
   return (
-    <div
-      className="text-editor card"
-      onClick={() => setEditing(true)}
-    >
+    <div className="text-editor card" onClick={() => setEditing(true)}>
       <div className="card-content">
-        <MDEditor.Markdown
-          source={cell.content || "Click to edit"}
-        />
+        <MDEditor.Markdown source={cell.content || "Click to edit"} />
       </div>
     </div>
   );
